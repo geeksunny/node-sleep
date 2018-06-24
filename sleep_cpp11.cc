@@ -13,4 +13,8 @@ void node_usleep(unsigned usec) {
   std::this_thread::sleep_for(std::chrono::microseconds(usec));
 }
 
+void node_nsleep(unsigned nsec) {
+  std::this_thread::sleep_for(std::chrono::nanoseconds(nsec));
+}
+
 #endif

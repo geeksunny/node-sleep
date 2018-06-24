@@ -34,6 +34,7 @@ Usage
 * `sleep.sleep(n)`: sleep for `n` seconds
 * `sleep.msleep(n)`: sleep for `n` miliseconds
 * `sleep.usleep(n)`: sleep for `n` microseconds (1 second is 1000000 microseconds)
+* `sleep.nsleep(n)`: sleep for `n` nanoseconds (1 second is 1E+09 nanoseconds; 1 millisecond is 1000000 nanoseconds)
 
 
 [1]: http://linux.die.net/man/3/sleep

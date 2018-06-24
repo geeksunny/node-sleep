@@ -19,5 +19,10 @@ void node_usleep(unsigned usec) {
   WaitForSingleObject(timer, INFINITE);
   CloseHandle(timer);
 }
+
+void node_nsleep(unsigned nsec) {
+  Nan::ThrowError("Nanosecond timeout is not available on this platform.");
+}
+
 #endif
 

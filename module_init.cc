@@ -29,11 +29,25 @@ NAN_METHOD(MUSleep) {
   info.GetReturnValue().SetUndefined();
 }
 
+NAN_METHOD(NSleep) {
+  Nan::HandleScope scope;
+
+  if (info.Length() < 1 || !info[0]->IsUint32()) {
+    return Nan::ThrowError("Expected number of nanoseconds");
+  }
+
+  node_nsleep(info[0]->Uint32Value());
+
+  info.GetReturnValue().SetUndefined();
+}
+
 NAN_MODULE_INIT(init) {
   Nan::Set(target, Nan::New<String>("sleep").ToLocalChecked(),
     Nan::New<FunctionTemplate>(Sleep)->GetFunction());
   Nan::Set(target, Nan::New<String>("usleep").ToLocalChecked(),
     Nan::New<FunctionTemplate>(MUSleep)->GetFunction());
+  Nan::Set(target, Nan::New<String>("nsleep").ToLocalChecked(),
+    Nan::New<FunctionTemplate>(NSleep)->GetFunction());
 }
 
 NODE_MODULE(node_sleep, init)

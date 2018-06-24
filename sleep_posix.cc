@@ -30,4 +30,16 @@ void node_usleep(unsigned usec) {
     }
   }
 }
+
+void node_nsleep(unsigned nsec) {
+  // TODO: should this employ the same logic as usleep above?
+  struct timespec req, rem;
+  req.tv_sec = 0;
+  req.tv_nsec = nsec;
+  if (nanosleep(&req, &rem) < 0) {
+    // TODO: throw exception here?
+    printf("Nanosleep system call failed.\n");
+  }
+}
+
 #endif
